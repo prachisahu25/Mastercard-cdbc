@@ -8,6 +8,7 @@ import com.example.mastercardcdbc.exception.TransactionException;
 import com.example.mastercardcdbc.service.AccountService;
 import com.example.mastercardcdbc.service.TransactionService;
 import com.example.mastercardcdbc.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,20 +30,20 @@ public class TransactionController {
 
 
     @PostMapping(value = "/saveUser")
-    public ResponseEntity<String> saveUser(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<String> saveUser(@Valid @RequestBody UserRequest userRequest) {
         userService.createUser(userRequest);
         return new ResponseEntity<>("User Created Successfully", HttpStatus.CREATED);
     }
 
 
     @PostMapping(value = "/saveAccount")
-    public ResponseEntity<String> saveAccount(@RequestBody AccountRequest accountRequest) throws ResourceNotFoundException {
+    public ResponseEntity<String> saveAccount(@Valid @RequestBody AccountRequest accountRequest) throws ResourceNotFoundException {
         accountService.createAccount(accountRequest);
         return new ResponseEntity<>("Account Created Successfully", HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/transaction")
-    public ResponseEntity<String> saveTransaction(@RequestBody TransactionRequest transactionRequest) throws TransactionException {
+    public ResponseEntity<String> saveTransaction(@Valid @RequestBody TransactionRequest transactionRequest) throws TransactionException {
         transactionService.transaction(transactionRequest);
         return new ResponseEntity<>("Transaction Completed Successfully", HttpStatus.OK);
     }

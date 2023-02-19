@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,8 +23,10 @@ public class User {
     private String id;
 
     @NotNull
+    @NotEmpty(message = "Please provide a Email")
     private String email;
     @NotNull
+    @NotEmpty(message = "Please provide a password")
     private String password;
 
     public User() {
