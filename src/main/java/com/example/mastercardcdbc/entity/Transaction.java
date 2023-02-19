@@ -15,7 +15,7 @@ import java.util.UUID;
 @Table(name = "transaction")
 @Getter
 @Setter
-public class Transaction {
+public class Transaction{
 
     @Id
     private String id;
